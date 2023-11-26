@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Update from './Update'
-
+import { getAllHistory } from '../services/allAPI'
 function Bookd() {
+  
+  const[history, setHistory]= useState([])
+  const allHistory=async()=>{
+    const {data}= await getAllHistory()
+    /*console.log(data);*/
+    setHistory(data)
+  }
+  console.log(history);
+  useEffect(()=>{
+    allHistory()
+  },[])
   return (
     <div>
         
@@ -19,14 +30,16 @@ function Bookd() {
 
   </tr>
   </thead><tbody>
+  {history?.length>0? 
+         history?.map((item, index)=>(
   <tr class="table-danger">
 
-    <td>1</td>
-    <td>TOYOTA</td>
-    <td>9:00</td>
+    <td>{index+1}</td>
+    <td>{item.carname}</td>
+    <td>{item.time}</td>
 
-    <td>13/05/2023</td>
-    <td>30000$</td>    
+    <td>{item.date}</td>
+    <td>{item.rate}</td>    
 
     <td>   
          <Update/>
@@ -34,8 +47,9 @@ function Bookd() {
     <td><span class="badge rounded-pill bg-danger">Cancel</span>
 </td>
 
-    </tr>
-
+    </tr>)):
+    <p className='mt-5 fw-bolder fs-4 text-danger'>No Bookings Yet</p>  
+         }
     </tbody>
  </table>
 

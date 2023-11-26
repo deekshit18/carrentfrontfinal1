@@ -1,11 +1,50 @@
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import React from 'react'
+import React, { useState } from 'react'
 import Bookd from '../components/Bookd';
 import Headerr from '../components/Headerr';
+import { getAllCars } from '../services/allAPI';
+import Five from '../components/Five';
+import { addDetails } from '../services/allAPI';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Booking() {
- 
-
+  const [addDetailsStatus,setAddDetailsStatus]= useState({})
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [Cars, setCars]=useState({ 
+    id:"",
+    carname:"",
+    username:"",
+    email:"",
+    time:"",
+    date:"",
+    days:"",
+    rate:""
+  })
+  console.log(Cars);
+  const handleUpload=async()=>{
+    const{username, email, time, date, days}= Cars
+    if(!username||!email||!time||!date||!days){
+    toast.warning("Please fill the form completely")
+  }
+  else{
+    const response= await addDetails(Cars)
+    console.log(response);
+    if(response.status>=200&&response.status<300){
+      setAddDetailsStatus(response.data)
+      toast.success('uploaded successfully')
+      //close modal
+      handleClose()
+    }
+    else{
+      console.log(response);
+      toast.error('something went wrong. Try again later')
+    }
+  }
+}
 
   return (
    <>
@@ -25,7 +64,7 @@ function Booking() {
                             <h1 className=''>TOYOTA SUPRA</h1>
                             <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center text-primary">
-  Catogory:
+  Category:
     <span class="badge bg-primary rounded-pill">Luxury..</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center text-primary">
@@ -39,9 +78,9 @@ function Booking() {
                 <Col lg={4} md={6} sm={12}>
                       <Form className='border shadow bg-light  text-primary rounded p-3 mb-3 container'>
                                 <Form.Group className="mb-3" controlId="formBasicnumber">
-                                 <Form.Control type="text" placeholder="User Name" />
+                                 <Form.Control type="text" placeholder="User Name" onChange={(e)=>setCars({...Cars,username:e.target.value})} />
                             </Form.Group>  <Form.Group className="mb-3" controlId="formBasicnumber">
-                                 <Form.Control type="email" placeholder="Email" />
+                                 <Form.Control type="email" placeholder="Email" onChange={(e)=>setCars({...Cars,email:e.target.value})}/>
 
                             </Form.Group>  
                                <Row className='justify-content-inline'>
@@ -49,24 +88,20 @@ function Booking() {
                                 
                                 <Form.Group className="mb-3" controlId="formBasicdate">
                                  <Form.Label className='fw-bolder'>Date</Form.Label>
-                                 <Form.Control type="date" placeholder="Enter drop-off place" />
+                                 <Form.Control type="date" onChange={(e)=>setCars({...Cars,date:e.target.value})} placeholder="Enter drop-off place" />
                             </Form.Group></Col>
                                 <Col> <Form.Group className="mb-3" controlId="formBasictime">
                                  <Form.Label className='fw-bolder'>Time</Form.Label>
-                                 <Form.Control type="time" placeholder="Enter drop-off place" />
+                                 <Form.Control type="time" onChange={(e)=>setCars({...Cars,time:e.target.value})} placeholder="Enter drop-off place" />
                             </Form.Group></Col>
-                               </Row>
-                               <Form.Group className="mb-3" controlId="formBasicnumber">
-                                 <Form.Label className='fw-bolder'>Hours</Form.Label>
-                                 <Form.Control type="number" placeholder="1" />
-                            </Form.Group>  
+                               </Row> 
                             <Form.Group className="mb-3" controlId="formBasicnumber">
                                  <Form.Label className='fw-bolder'>Number Of Days</Form.Label>
-                                 <Form.Control type="number" placeholder="1" />
+                                 <Form.Control type="number" onChange={(e)=>setCars({...Cars,days:e.target.value})} placeholder="1" />
                                  </Form.Group>
                                  <h4 className='mt-1 text-primary'>Total Price : ₹ 30,000</h4>                      
 
-                            <div className='text-center mt-3'><Button type='button' className='btn btn-outline-primary w-50'>Book Now</Button></div>
+                            <div className='text-center mt-3'><Button type='button' onClick={handleUpload} className='btn btn-outline-primary w-50'>Book Now</Button></div>
 
                       </Form>
     
@@ -94,7 +129,7 @@ function Booking() {
           </Row>
           <Bookd/>
       </Container>
-   
+      <ToastContainer position='top-center' theme='colored' autoClose={2000}/>
    </>
   );
 }
