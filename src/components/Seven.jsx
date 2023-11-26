@@ -36,7 +36,7 @@ function Seven() {
     <span class="badge bg-warning rounded-pill">{`${car.seat}`}</span>
   </li>
   <li class="text-warning list-group-item d-flex justify-content-between align-items-center">
-  Per Hour:
+  Per Day:
     <span class="badge bg-warning rounded-pill">{`${car.price}`}</span>
   </li>
 </ul>

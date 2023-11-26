@@ -17,7 +17,7 @@ function Home() {
 
 </p>
 <a href='#cat'>
-        <button type="button" class="btn btn-success" fdprocessedid="44phzq">          Get Start <i class="fa-solid fa-arrow-right"></i>
+        <button type="button" class="btn btn-success" fdprocessedid="44phzq">          Get Started <i class="fa-solid fa-arrow-right"></i>
   </button>
   
 </a>    </Col>

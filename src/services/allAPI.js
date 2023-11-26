@@ -16,3 +16,12 @@ export const addDetails= async(reqBody)=>{
 export const getAllHistory= async()=>{
     return await commonAPI('GET',`${serverURL}/bookingdetails`,"")
     }
+    //api call to delete booking history
+export const deleteCarHistory= async(id)=>{
+    return await commonAPI('DELETE', `${serverURL}/bookingdetails/${id}`,{})
+    
+    }
+    //api to update the booking details
+     export const updateDetails=async(id, body)=>{
+        return await commonAPI('PUT', `${serverURL}/bookingdetails/${id}`,body)
+      }

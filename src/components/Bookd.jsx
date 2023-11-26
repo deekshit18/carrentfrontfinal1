@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Update from './Update'
-import { getAllHistory } from '../services/allAPI'
+import { deleteCarHistory,getAllHistory,updateDetails } from '../services/allAPI'
 function Bookd() {
   
   const[history, setHistory]= useState([])
@@ -9,10 +9,14 @@ function Bookd() {
     /*console.log(data);*/
     setHistory(data)
   }
-  console.log(history);
+  const removeHistory=async(id)=>{
+    await deleteCarHistory(id)
+    //to get remaining history
+    allHistory()
+  }
   useEffect(()=>{
     allHistory()
-  },[])
+  })
   return (
     <div>
         
@@ -44,7 +48,7 @@ function Bookd() {
     <td>   
          <Update/>
 </td>    
-    <td><span class="badge rounded-pill bg-danger">Cancel</span>
+    <td><span class="badge rounded-pill bg-danger" onClick={()=>removeHistory(item?.id)}>Cancel</span>
 </td>
 
     </tr>)):

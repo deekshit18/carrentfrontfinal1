@@ -1,15 +1,15 @@
-import React from 'react'
+  import React from 'react'
 import {Col, Container, Form, Row } from 'react-bootstrap';
-
+import { getAllHistory, updateDetails } from '../services/allAPI';
   import { useState } from 'react';
   import Button from 'react-bootstrap/Button';
   import Modal from 'react-bootstrap/Modal';
   function Update() {
-
-    const [show, setShow] = useState(false);
-  
+    const[Cars, setCars]=useState([])
+    const [show, setShow] = useState(false); 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
   
     return (
       <>
@@ -28,20 +28,16 @@ import {Col, Container, Form, Row } from 'react-bootstrap';
                                 
                                 <Form.Group className="mb-3" controlId="formBasicdate">
                                  <Form.Label className='fw-bolder'>Date</Form.Label>
-                                 <Form.Control type="date" placeholder="Enter drop-off place" />
+                                 <Form.Control onChange={(e)=>setCars({...Cars,date:e.target.value})} type="date" placeholder="Enter drop-off place" />
                             </Form.Group></Col>
                                 <Col> <Form.Group className="mb-3" controlId="formBasictime">
                                  <Form.Label className='fw-bolder'>Time</Form.Label>
-                                 <Form.Control type="time" placeholder="Enter drop-off place" />
+                                 <Form.Control onChange={(e)=>setCars({...Cars,time:e.target.value})} type="time" placeholder="Enter drop-off place" />
                             </Form.Group></Col>
-                               </Row>
-                               <Form.Group className="mb-3" controlId="formBasicnumber">
-                                 <Form.Label className='fw-bolder'>Hours</Form.Label>
-                                 <Form.Control type="number" placeholder="1" />
-                            </Form.Group>  
+                               </Row> 
                             <Form.Group className="mb-3" controlId="formBasicnumber">
                                  <Form.Label className='fw-bolder'>Number Of Days</Form.Label>
-                                 <Form.Control type="number" placeholder="1" />
+                                 <Form.Control onChange={(e)=>setCars({...Cars,days:e.target.value})} type="number" placeholder="1" />
                                  </Form.Group>
                                  <h4 className='mt-1'>Total Price : ₹ 30,000</h4>    </Form>                  
 </Modal.Body>

@@ -1,5 +1,5 @@
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Bookd from '../components/Bookd';
 import Headerr from '../components/Headerr';
 import { getAllCars } from '../services/allAPI';
@@ -61,6 +61,7 @@ function Booking() {
                           </div>
                           
                           <div className='p-3'>
+                            
                             <h1 className=''>TOYOTA SUPRA</h1>
                             <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center text-primary">
@@ -80,7 +81,7 @@ function Booking() {
                                 <Form.Group className="mb-3" controlId="formBasicnumber">
                                  <Form.Control type="text" placeholder="User Name" onChange={(e)=>setCars({...Cars,username:e.target.value})} />
                             </Form.Group>  <Form.Group className="mb-3" controlId="formBasicnumber">
-                                 <Form.Control type="email" placeholder="Email" onChange={(e)=>setCars({...Cars,email:e.target.value})}/>
+                                 <Form.Control type="Email" placeholder="Email" onChange={(e)=>setCars({...Cars,email:e.target.value})}/>
 
                             </Form.Group>  
                                <Row className='justify-content-inline'>

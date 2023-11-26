@@ -35,7 +35,7 @@ function Luxurious() {
     <span class="badge bg-success rounded-pill">{`${car.seat}`}</span>
   </li>
   <li class="text-success list-group-item d-flex justify-content-between align-items-center">
-  Per Hour:
+  Per Day:
     <span class="badge bg-success rounded-pill">{`${car.price}`}</span>
   </li>
 </ul>

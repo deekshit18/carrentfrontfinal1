@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+ import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Col, Row } from 'react-bootstrap';
@@ -6,6 +6,12 @@ import { Link } from 'react-router-dom';
 import { getAllCars } from '../services/allAPI';
 function Five() {
   const [allCars, setAllCars]= useState([])
+  const handleClick=(name)=>{
+    const datas= name
+    console.log(datas);
+  }
+
+  
   const retrieveCars=async()=>{
     const response= await getAllCars();
     const {data}= response
@@ -15,7 +21,9 @@ function Five() {
   useEffect(()=>{ retrieveCars()},[])
 
   return (
+    
    <div>
+      
       <div className='container'>
         {
       allCars.filter(car=>car.category=='Compact').map((car)=>(
@@ -36,11 +44,11 @@ function Five() {
         <span class="badge bg-info  rounded-pill">{`${car.seat}`}</span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center text-info">
-      Per Hour:
+      Per Day:
         <span class="badge bg-info rounded-pill">{`${car.price}`}</span>
       </li>
     </ul>
-            <Link to="/booking" style={{ textDecoration: 'none', color: 'inherit' }}><button type="button" class="btn btn-outline-info mt-3 bg-info" fdprocessedid="rc6d2v">Book Now</button>  
+            <Link to="/booking" style={{ textDecoration: 'none', color: 'inherit' }}><button onClick={()=>handleClick(`${car.id}`)} type="button" class="btn btn-outline-info mt-3 bg-info" fdprocessedid="rc6d2v">Book Now</button>  
             
             </Link>
     
