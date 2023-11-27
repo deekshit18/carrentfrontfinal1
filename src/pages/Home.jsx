@@ -7,7 +7,7 @@ import Header from '../components/Header';
 function Home() {
   return (
     <div className=''>      <Header/>
-    <div className='' style={{height:"90vh",width:"100%"}}>
+    <div className='' style={{height:"",width:"100%"}}>
     <Container>
   <Row className='align-items-center'>
     <Col sm={12} md={6}>
@@ -17,7 +17,8 @@ function Home() {
 
 </p>
 <a href='#cat'>
-        <button type="button" class="btn btn-success" fdprocessedid="44phzq">          Get Started <i class="fa-solid fa-arrow-right"></i>
+<button type="button" class="btn btn-outline-danger">
+       Get Started <i class="fa-solid fa-arrow-right"></i>
   </button>
   
 </a>    </Col>
@@ -31,7 +32,7 @@ function Home() {
 </Container>
 </div>
 <div class="progress " id='about'>
-  <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width:" 25%"}}></div>
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width:" 100%"}}></div>
 </div>
 
 <AboutSection/>

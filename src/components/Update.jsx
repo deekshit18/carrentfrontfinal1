@@ -25,6 +25,7 @@ function Update({ history,index }) {
     
 
   }
+  
 
   return (
     <>
@@ -57,13 +58,13 @@ function Update({ history,index }) {
           </Form.Group> */}
           <Form.Group className="mb-3" controlId="formBasicnumber">
             <Form.Label className='fw-bolder'>Number Of Days</Form.Label>
-            <Form.Control type="number" value={update.days} onChange={(e)=>setUpdate({...update,days:e.target.value})} placeholder="1" />
+            <Form.Control type="text" value={update.days} onChange={(e)=>setUpdate({...update,days:e.target.value})} placeholder="1" />
           </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
 
-          <button type="button" class="btn btn-success  text-light"  onClick={()=>updateBook(index+1)} style={{ backgroundColor: "green" }} fdprocessedid="bqpep">Save Changes</button>
+          <button type="button" class="btn btn-success  text-light"  onClick={()=>updateBook(update?.id)} style={{ backgroundColor: "green" }} fdprocessedid="bqpep">Save Changes</button>
 
 
         </Modal.Footer>

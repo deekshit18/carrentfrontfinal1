@@ -19,16 +19,17 @@ function Bookd() {
   },[])
   return (
     <div>
-        
+           <div className="table-responsive">
+   
 <table class="table table-hover">
   <thead>
   <tr class="table-dark">
     <th scope="col">#</th>
-    <th scope="col">User Name</th>
+    <th scope="col">Car Name</th>
     <th scope="col">Time</th>
     <th scope="col">Days</th>
     <th scope="col">Date</th>
-    <th scope="col">Email</th>
+    <th scope="col">Total</th>
 
     <th scope="col">Update</th>
     <th scope="col">Cancel</th>
@@ -40,11 +41,11 @@ function Bookd() {
   <tr class="table-danger">
 
     <td>{index+1}</td>
-    <td>{item.username}</td>
+    <td>{item.carname}</td>
     <td>{item.time}</td>
     <td>{item.days}</td>
     <td>{item.date}</td>
-    <td>{item.email}</td>    
+    <td>{item.rate*item.days}</td>    
 
     <td>   
     <Update index={index}  history={history}/>
@@ -57,7 +58,7 @@ function Bookd() {
          }
     </tbody>
  </table>
-
+</div>
 </div>
   )
 }

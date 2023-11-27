@@ -10,7 +10,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-bootstrap/Modal';
 function Five() {
-  const [eid,setEid] = useState(0)
+  const [eid,setEid] = useState("")
+  const [carn,setCarn] = useState("")
+  const [carr,setCarr] = useState("")
+  // const [dayd,setDayd] = useState("")
+
   const [allCars, setAllCars]= useState([])
   const retrieveCars=async()=>{
     const response= await getAllCars();
@@ -23,7 +27,13 @@ function Five() {
     setEid(id)
     setShow(true);
     console.log(eid);
+    setCarn(allCars[id-1].carname)
+    setCarr(allCars[id-1].price)
+
   }
+  // const dragover=(e)=>{
+  //   e.preventDefault()
+  // }
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -40,14 +50,14 @@ function Five() {
         days:"",
         rate:""
       })
-      const days=Cars.days
-      console.log(days);
-      const rate=Cars.rate
-      console.log(rate);
-      // console.log(carr);
+      
+
+
+      
       const handleUpload=async()=>{
-        const{username, email, time, date, days}=Cars
-        if(!username||!email||!time||!date||!days){
+        const{carname,username, email, time, date, days,rate}=Cars
+        setCars({...Cars,rate:carr})
+      if(!username||!email||!time||!date||!days){
         toast.warning("Please fill the form completely")
       }
       else{
@@ -65,7 +75,23 @@ function Five() {
         }
       }
     }
+    useEffect(() => {
+      // setDayd(Cars.days)
+      const prate=carr
+      const daydoo=Cars.days
+      console.log(prate,daydoo);
+      const lastrate=prate*daydoo
+      console.log(lastrate);
+      if (carn !== "") {
+        setCars((prevCars) => ({
+          ...prevCars,
+          carname: carn,
+rate:carr
+        }));
+      }
+    }, [carn]);
   
+   
       return (
        <>
 
@@ -76,10 +102,7 @@ function Five() {
       allCars.filter(car=>car.category=='Compact').map((car,index)=>(
            
            <Row className="mt-4 align-items-center">
-<div style={{display:"none"}}>
-              <Booking carr={car} fid={eid}/>
-  
-</div>          <Col md={6} className="mb-4 cardcontainer">
+      <Col md={6} className="mb-4">
            <img className='galleryImg' src={`${car.image}`}style={{width:"100%"}} alt="Compact Cars" fluid />
           </Col>
           <Col md={6} className="mb-4">
@@ -100,23 +123,29 @@ function Five() {
     </ul>
     
             
-            <button onClick={(e)=>handleShow(index)} type="button" class="btn btn-outline-info mt-3 bg-info" fdprocessedid="rc6d2v">Book Now</button>    
+            <button onClick={(e)=>handleShow(car?.id)} type="button" class="btn btn-outline-info mt-3 bg-info" fdprocessedid="rc6d2v">Book Now</button>    
             
   
-  <Modal show={show} onHide={handleClose} animation={false}>
+
+  <ToastContainer position='top-center' theme='colored' autoClose={2000}/>
+            
+          </Col>
+        </Row>
+        ))}
+          <Modal show={show} onHide={handleClose} animation={false}>
   <Modal.Header closeButton>
-    <Modal.Title>{allCars[eid].carname}</Modal.Title>
+    <Modal.Title><h1 className='ms-5 text-info'>{carn}</h1></Modal.Title>
   </Modal.Header>
   <Modal.Body>       
-      <Row className=' mt-2 mb-2'>
+      <Row className=''>
                              <Col lg={12} md={12} sm={12}>
                           
-                  <Form className='border shadow bg-light  text-primary rounded p-3 container'>
-                            <Form.Group className="" controlId="formBasicnumber">
+                  <Form className='border shadow bg-light  text-info rounded p-3 container'>
+                            <Form.Group className="mb-3" controlId="formBasicnumber">
                             {/* <Form.Control  type="text" value={allCars[eid].carname} placeholder="User Name"  onChange={(e)=>setCars({...Cars,carname:e.target.value})}/> */}
         
 
-                             <Form.Control type="text" placeholder="User Name" onChange={(e)=>setCars({...Cars,username:e.target.value})} />
+                             <Form.Control  type="text" placeholder="User Name" onChange={(e)=>setCars({...Cars,username:e.target.value})} />
                         </Form.Group>  
                         <Form.Group className="mb-3" controlId="formBasicnumber">
                              <Form.Control type="email" placeholder="Email" onChange={(e)=>setCars({...Cars,email:e.target.value})}/>
@@ -137,9 +166,17 @@ function Five() {
                            </Row> 
                         <Form.Group className="mb-3" controlId="formBasicnumber">
                              <Form.Label className='fw-bolder'>Number Of Days</Form.Label>
-                             <Form.Control type="number" onChange={(e)=>setCars({...Cars,days:e.target.value})} placeholder="1" />
+                             <Form.Control  type="text" onChange={(e)=>setCars({...Cars,days:e.target.value})} placeholder="Number Of Days" />
                              </Form.Group>
-                             <h4 className='mt-1 text-primary'>Price/day : {`${car.price}`}</h4>                      
+<Row>
+<Col md={6}>
+                                 <h4 className="mt-3 text-info ">Rate/Day: {carr}</h4>
+  
+</Col>                           
+<Col md={6}>
+      <Button type='button ' onClick={handleUpload} className='btn btn-outline-primary ms-5 mt-3 bg-info'>Book Now</Button>
+  
+</Col></Row>
 
                        
 
@@ -151,18 +188,8 @@ function Five() {
            
       </Row>
   </Modal.Body>
-  <Modal.Footer>
-    <Button variant="secondary" onClick={handleClose}>
-      Close
-    </Button>
-    <div className='text-center mt-3'><Button type='button' onClick={handleUpload} className='btn btn-outline-primary'>Book Now</Button></div>
-  </Modal.Footer>
+
 </Modal>
-  <ToastContainer position='top-center' theme='colored' autoClose={2000}/>
-            
-          </Col>
-        </Row>
-        ))}
       </div>
    </>
   )
