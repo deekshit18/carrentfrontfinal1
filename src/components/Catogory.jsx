@@ -22,7 +22,7 @@ function Catogory() {
         <p>
           Discover fuel-efficient and easy-to-manage compact cars, perfect for navigating city streets with style and comfort.
         </p>
-        <p>Starting Price: $20,000</p>
+        <p>Starting Price: ₹2500</p>
         <p>Seat Capacity: 4</p>
         <Link to="/compact" style={{ textDecoration: 'none', color: 'inherit' }}><button type="button" class="btn btn-outline-info" fdprocessedid="rc6d2v">SELECT</button>
 </Link>
@@ -40,7 +40,7 @@ function Catogory() {
         <p>
           Experience the spacious comfort and versatility of our SUVs, perfect for family trips or outdoor excursions, with advanced safety features for peace of mind.
         </p>
-        <p>Starting Price: $30,000</p>
+        <p>Starting Price: ₹7000</p>
         <p>Seat Capacity: 5-7</p>
         <Link to="/suv" style={{ textDecoration: 'none', color: 'inherit' }}><button type="button" class="btn btn-outline-warning" fdprocessedid="r0yj8k">SELECT</button>
 </Link>
@@ -62,7 +62,7 @@ function Catogory() {
         <p>
           Indulge in the ultimate driving experience with our premium selection of luxury cars, where cutting-edge technology meets opulent design for a journey beyond the ordinary.
         </p>
-        <p>Starting Price: $50,000</p>
+        <p>Starting Price: ₹15,000</p>
         <p>Seat Capacity: 2-5</p>
         <Link to="/luxurious" style={{ textDecoration: 'none', color: 'inherit' }}><button type="button" class="btn btn-outline-success" fdprocessedid="8ms8">SELECT</button>
 </Link>

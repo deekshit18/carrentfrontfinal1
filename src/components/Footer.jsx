@@ -37,6 +37,9 @@ function Footer() {
                   <Link to="/luxurious" style={{ textDecoration: 'none', color: 'inherit' }}>Luxurious Cars</Link>
                 </li>
                 <li className='mt-3'>
+                  <Link to="/booking" style={{ textDecoration: 'none', color: 'inherit' }}>Booking Details</Link>
+                </li>
+                <li className='mt-3'>
 <a href="#navb"> <span class="badge bg-warning"><i class="fa-regular fa-circle-up fs-2"></i></span>
 </a>                </li>
               </ul>

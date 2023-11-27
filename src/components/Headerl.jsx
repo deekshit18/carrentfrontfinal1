@@ -20,6 +20,7 @@ function Headerl() {
             <Nav.Link href="#about" className='NavLink '> <Link to="/compact"  style={{ textDecoration: 'none', color: 'inherit' }}>Compact</Link></Nav.Link>
             <Nav.Link href="#about" className='NavLink '>  <Link to="/suv" style={{ textDecoration: 'none', color: 'inherit' }}>SUVs</Link></Nav.Link>
             <Nav.Link href="#about" className='NavLink '> <Link to="/luxurious" style={{ textDecoration: 'none', color: 'inherit' }}>Luxury</Link></Nav.Link>
+            <Nav.Link href="#about" className='NavLink'> <Link to="/booking" style={{ textDecoration: 'none', color: 'inherit' }}>Booking Details</Link></Nav.Link>
 
                       </Nav>
         </Navbar.Collapse>

@@ -22,6 +22,9 @@ export const deleteCarHistory= async(id)=>{
     
     }
     //api to update the booking details
-     export const updateDetails=async(id, body)=>{
-        return await commonAPI('PUT', `${serverURL}/bookingdetails/${id}`,body)
-      }
+    //  export const updateDetails=async(id, body)=>{
+    //     return await commonAPI('PUT', `${serverURL}/bookingdetails/${id}`,body)
+    //   }
+      export const updatebook = async(id,body)=>{
+        return await commonAPI('PUT',`${serverURL}/bookingdetails/${id}`,body)
+  }

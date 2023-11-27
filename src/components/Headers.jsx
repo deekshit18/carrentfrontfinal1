@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-function Headers() {
+function Headerl() {
   return (
 <div>
         <Navbar id="navb" expand="lg" className="bg-warning nav" >
@@ -20,10 +20,11 @@ function Headers() {
             <Nav.Link href="#about" className='NavLink '> <Link to="/compact"  style={{ textDecoration: 'none', color: 'inherit' }}>Compact</Link></Nav.Link>
             <Nav.Link href="#about" className='NavLink '>  <Link to="/suv" style={{ textDecoration: 'none', color: 'inherit' }}>SUVs</Link></Nav.Link>
             <Nav.Link href="#about" className='NavLink '> <Link to="/luxurious" style={{ textDecoration: 'none', color: 'inherit' }}>Luxury</Link></Nav.Link>
+            <Nav.Link href="#about" className='NavLink'> <Link to="/booking" style={{ textDecoration: 'none', color: 'inherit' }}>Booking Details</Link></Nav.Link>
 
                       </Nav>
         </Navbar.Collapse>
     </Navbar></div>  )
 }
 
-export default Headers
+export default Headerl

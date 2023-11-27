@@ -16,7 +16,7 @@ function Bookd() {
   }
   useEffect(()=>{
     allHistory()
-  })
+  },[])
   return (
     <div>
         
@@ -24,10 +24,11 @@ function Bookd() {
   <thead>
   <tr class="table-dark">
     <th scope="col">#</th>
-    <th scope="col">Car Name</th>
+    <th scope="col">User Name</th>
     <th scope="col">Time</th>
+    <th scope="col">Days</th>
     <th scope="col">Date</th>
-    <th scope="col">Rate</th>
+    <th scope="col">Email</th>
 
     <th scope="col">Update</th>
     <th scope="col">Cancel</th>
@@ -39,14 +40,14 @@ function Bookd() {
   <tr class="table-danger">
 
     <td>{index+1}</td>
-    <td>{item.carname}</td>
+    <td>{item.username}</td>
     <td>{item.time}</td>
-
+    <td>{item.days}</td>
     <td>{item.date}</td>
-    <td>{item.rate}</td>    
+    <td>{item.email}</td>    
 
     <td>   
-         <Update/>
+    <Update index={index}  history={history}/>
 </td>    
     <td><span class="badge rounded-pill bg-danger" onClick={()=>removeHistory(item?.id)}>Cancel</span>
 </td>
